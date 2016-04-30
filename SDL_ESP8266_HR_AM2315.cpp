@@ -24,16 +24,16 @@ extern unsigned char FirstBadReply[10];
 
 #endif
 
-#include "ESG_AM2315.h"
+#include "SDL_ESP8266_HR_AM2315.h"
 //#include <util/delay.h>
 
-ESG_AM2315::ESG_AM2315() {
+SDL_ESP8266_HR_AM2315::SDL_ESP8266_HR_AM2315() {
 }
 int delayByCPU(long delaycount);
 
 int I2C_ClearBus();
 
-boolean ESG_AM2315::readData(float *dataArray) {
+boolean SDL_ESP8266_HR_AM2315::readData(float *dataArray) {
   uint8_t reply[10];
 
 
@@ -47,14 +47,9 @@ boolean ESG_AM2315::readData(float *dataArray) {
 
   Wire.setClock(400000L);
 
-  //Wire.beginTransmission(AM2315_I2CADDR);
-  //delay(3);
-  //Wire.endTransmission();
-
+  
   Wire.beginTransmission(AM2315_I2CADDR);
   Wire.write(AM2315_READREG);
-  //Wire.write(0x00);  // start at address 0x0
-  //Wire.write(4);  // request 4 bytes data
   Wire.endTransmission();
 
   //delay(50);
@@ -62,15 +57,12 @@ boolean ESG_AM2315::readData(float *dataArray) {
 
 
 
-  // for reasons unknown we have to send the data twice :/
-  // whats the bug here?
   Wire.beginTransmission(AM2315_I2CADDR);
   Wire.write(AM2315_READREG);
   Wire.write(0x00);  // start at address 0x0
   Wire.write(4);  // request 4 bytes data
   Wire.endTransmission();
 
-  //delay(50);
   delayByCPU(50);
 
   Wire.requestFrom(AM2315_I2CADDR, 8);
@@ -82,8 +74,7 @@ boolean ESG_AM2315::readData(float *dataArray) {
 
   interrupts();
   ETS_UART_INTR_ENABLE();
-  //ETS_INTR_UNLOCK();
-
+  
   yield();
 
 

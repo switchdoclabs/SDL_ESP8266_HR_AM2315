@@ -3,6 +3,8 @@ Highly Reliable driver for the ESP8266
 SwitchDoc Labs   April 2016
 www.switchdoc.com
 
+Version 1.1 April 29, 2016 - Changed class names to avoid library conflicts, removed commented code
+
 
 See the AM2315 ESP8266 posting on www.switchdoc.com
 

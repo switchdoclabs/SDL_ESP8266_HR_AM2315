@@ -28,9 +28,9 @@ Additional improvements added by Daniel Sandoval/EasternStarGeek
 #define AM2315_I2CADDR       0x5C
 #define AM2315_READREG       0x03
 
-class ESG_AM2315 {
+class SDL_ESP8266_HR_AM2315 {
  public:
-  ESG_AM2315();
+  SDL_ESP8266_HR_AM2315();
   //boolean begin(void);
   boolean readData(float *dataArray);  
  

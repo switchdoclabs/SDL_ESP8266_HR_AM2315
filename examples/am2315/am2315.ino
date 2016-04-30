@@ -1,5 +1,5 @@
 #include <Wire.h>
-#include <ESG_AM2315.h>
+#include <SDL_ESP8266_HR_AM2315.h>
 
 /*************************************************** 
   This is an example for the AM2315 Humidity + Temp sensor
@@ -43,7 +43,7 @@ extern "C" {
 #include "user_interface.h"
 }
 
-ESG_AM2315 am2315;
+SDL_ESP8266_HR_AM2315 am2315;
 
 float dataAM2315[2];  //Array to hold data returned by sensor.  [0,1] => [Humidity, Temperature]
 boolean myOK;  // 1=successful read
