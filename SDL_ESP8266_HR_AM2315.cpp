@@ -86,12 +86,28 @@ boolean SDL_ESP8266_HR_AM2315::readData(float *dataArray) {
     humidity += reply[3];
     humidity /= 10;
 
+   // check for negative temperature
+
+    bool negative;
+    negative = false;
+
+    if (reply[4] & 0x80)
+    {
+      negative = true;
+
+    }
+
     dataArray[0] = humidity;
 
-    temp = reply[4];
+
+    temp = reply[4] & 0x7F;
     temp *= 256;
     temp += reply[5];
     temp /= 10;
+
+    if (negative)
+      temp = -temp;
+
 
     // leave in C
     //  dataArray[1] = (temp * 1.8)+32;

@@ -1,8 +1,9 @@
 Highly Reliable driver for the ESP8266
 
-SwitchDoc Labs   April 2016
+SwitchDoc Labs   October 2016
 www.switchdoc.com
 
+Version 1.2 Ocotober 12, 2016 - Fixed reporting on negative temperatures (below 0 degrees C).
 Version 1.1 April 29, 2016 - Changed class names to avoid library conflicts, removed commented code
 
 
